@@ -89,8 +89,15 @@ RSpec.describe Flotilla do
       seventh_flotilla.add_personnel(polly)
       seventh_flotilla.add_personnel(rover)
       seventh_flotilla.add_personnel(sampson)
-      
-      expect(seventh_flotilla.recommend_personnel).to eq([kathy, sampson])
+
+      expect(seventh_flotilla.recommend_personnel(daedalus)).to eq([kathy, sampson])
+
+      odyssey = Spacecraft.new({name: 'Odyssey', fuel: 300})
+      odyssey.add_requirement({operations: 6})
+      odyssey.add_requirement({maintenance: 3})
+      seventh_flotilla.add_ship(odyssey)
+
+      expect(seventh_flotilla.recommend_personnel(odyssey)).to eq([polly])
 
     end
   end

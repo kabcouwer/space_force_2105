@@ -16,15 +16,13 @@ class Flotilla
     @personnel << person
   end
 
-  def recommend_personnel
+  def recommend_personnel(ship)
     answer = []
-    @ships.each do |ship|
-      ship.requirements.map do |requirement|
-        @personnel.find_all do |person|
-          # require 'pry'; binding.pry
-          if person.specialties.include?(requirement.keys.shift)
-            answer << person
-          end
+    ship.requirements.map do |requirement|
+      @personnel.find_all do |person|
+        # require 'pry'; binding.pry
+        if person.specialties.include?(requirement.keys.shift) && person.experience >= requirement.values.shift
+          answer << person
         end
       end
     end
