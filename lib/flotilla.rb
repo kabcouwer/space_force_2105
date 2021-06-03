@@ -28,4 +28,13 @@ class Flotilla
     end
     answer.uniq
   end
+
+  def personnel_by_ship
+    new_hash = Hash.new { |hash, key| hash[key] = Array.new }
+    @ships.each do |ship|
+      new_hash[ship] = recommend_personnel(ship)
+    end
+    new_hash
+  end
+
 end
