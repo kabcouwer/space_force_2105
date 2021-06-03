@@ -14,9 +14,9 @@ RSpec.describe Flotilla do
     it 'has readable attributes' do
       seventh_flotilla = Flotilla.new({designation: 'Seventh Flotilla'})
 
-      expect(seventh_flotilla).to eq('Kathy Chan')
-      expect(seventh_flotilla).to eq(10)
-      expect(seventh_flotilla).to eq([])
+      expect(seventh_flotilla.name).to eq('Seventh Flotilla')
+      expect(seventh_flotilla.personnel).to eq([])
+      expect(seventh_flotilla.ships).to eq([])
     end
   end
 
